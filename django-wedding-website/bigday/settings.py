@@ -26,7 +26,7 @@ SECRET_KEY = 'u7!-y4k1c6b44q507nr_l+c^12o7ur++cpzyn!$65w^!gum@h%'
 DEBUG = False
 
 ALLOWED_HOSTS = ['www.connorfiona.com']
-
+# ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -124,7 +124,7 @@ USE_TZ = True
 STATIC_ROOT = 'static_root'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    os.path.join('bigday', 'static'),
+    os.path.join(BASE_DIR, os.path.join('bigday', 'static')),
 )
 
 # the address your emails (save the dates/invites/etc.) will come from
