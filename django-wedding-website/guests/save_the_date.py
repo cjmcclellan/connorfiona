@@ -14,47 +14,54 @@ from guests.models import Party
 SAVE_THE_DATE_TEMPLATE = 'guests/email_templates/save_the_date.html'
 SAVE_THE_DATE_CONTEXT_MAP = {
         'lions-head': {
-            'title': "Lion's Head",
+            'title': "Taiwan Forest",
             'header_filename': 'hearts.png',
-            'main_image': 'lions-head.jpg',
+            'main_image': 'taiwan_forest_rot.png',
             'main_color': '#fff3e8',
             'font_color': '#666666',
         },
-        'ski-trip': {
-            'title': 'Ski Trip',
+        'texas': {
+            'title': "Texas",
             'header_filename': 'hearts.png',
-            'main_image': 'ski-trip.jpg',
-            'main_color': '#330033',
-            'font_color': '#ffffff',
+            'main_image': 'texas.JPG',
+            'main_color': '#fff3e8',
+            'font_color': '#666666',
         },
-        'canada': {
-            'title': 'Canada!',
-            'header_filename': 'maple-leaf.png',
-            'main_image': 'canada-cartoon-resized.jpg',
-            'main_color': '#ea2e2e',
-            'font_color': '#e5ddd9',
-        },
-        'american-gothic': {
-            'title': 'American Gothic',
-            'header_filename': 'hearts.png',
-            'main_image': 'american-gothic.jpg',
-            'main_color': '#b6ccb5',
-            'font_color': '#000000',
-        },
-        'plunge': {
-            'title': 'The Plunge',
-            'header_filename': 'plunger.png',
-            'main_image': 'plunge.jpg',
-            'main_color': '#b4e6ff',
-            'font_color': '#000000',
-        },
-        'dimagi': {
-            'title': 'Dimagi',
-            'header_filename': 'commcare.png',
-            'main_image': 'join-us.jpg',
-            'main_color': '#003d71',
-            'font_color': '#d6d6d4',
-        }
+        # 'ski-trip': {
+        #     'title': 'Ski Trip',
+        #     'header_filename': 'hearts.png',
+        #     'main_image': 'ski-trip.jpg',
+        #     'main_color': '#330033',
+        #     'font_color': '#ffffff',
+        # },
+        # 'canada': {
+        #     'title': 'Canada!',
+        #     'header_filename': 'maple-leaf.png',
+        #     'main_image': 'canada-cartoon-resized.jpg',
+        #     'main_color': '#ea2e2e',
+        #     'font_color': '#e5ddd9',
+        # },
+        # 'american-gothic': {
+        #     'title': 'American Gothic',
+        #     'header_filename': 'hearts.png',
+        #     'main_image': 'american-gothic.jpg',
+        #     'main_color': '#b6ccb5',
+        #     'font_color': '#000000',
+        # },
+        # 'plunge': {
+        #     'title': 'The Plunge',
+        #     'header_filename': 'plunger.png',
+        #     'main_image': 'plunge.jpg',
+        #     'main_color': '#b4e6ff',
+        #     'font_color': '#000000',
+        # },
+        # 'dimagi': {
+        #     'title': 'Dimagi',
+        #     'header_filename': 'commcare.png',
+        #     'main_image': 'join-us.jpg',
+        #     'main_color': '#003d71',
+        #     'font_color': '#d6d6d4',
+        # }
     }
 
 
@@ -105,10 +112,10 @@ def get_save_the_date_context(template_id):
         template_id = 'lions-head'
     context = copy(SAVE_THE_DATE_CONTEXT_MAP[template_id])
     context['name'] = template_id
-    context['page_title'] = 'Cory and Rowena - Save the Date!'
+    context['page_title'] = 'Connor and Fiona - Save the Date!'
     context['preheader_text'] = (
         "The date that you've eagerly been waiting for is finally here. "
-        "Cory and Ro are getting married! Save the date!"
+        "Connor and Fiona are getting married! Save the date!"
     )
     return context
 
@@ -117,7 +124,7 @@ def send_save_the_date_email(context, recipients, test_only=False):
     context['email_mode'] = True
     context['rsvp_address'] = settings.DEFAULT_WEDDING_REPLY_EMAIL
     template_html = render_to_string(SAVE_THE_DATE_TEMPLATE, context=context)
-    template_text = "Save the date for Cory and Rowena's wedding! July 2, 2016. Niagata-on-the-Lake, Ontario, Canada"
+    template_text = "Save the date for Connor and Fiona's wedding! September 8, 2019. LBJ Wildflower Center, Austin, Texas. Go to www.ConnorFiona.com for updated info."
     subject = 'Save the Date!'
     # https://www.vlent.nl/weblog/2014/01/15/sending-emails-with-embedded-images-in-django/
     msg = EmailMultiAlternatives(subject, template_text, settings.DEFAULT_WEDDING_FROM_EMAIL, recipients,
