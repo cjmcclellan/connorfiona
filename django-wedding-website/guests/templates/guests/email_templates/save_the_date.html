@@ -1,11 +1,10 @@
 {% extends 'guests/email_templates/email_base.html' %}
 {% load staticfiles %}
 {% block main_image %}
-    <a href="http://coryandro.com/"
+    <a href="http://www.connorfiona.com/"
        {% if email_mode %}target="_blank"{% endif %}>
-    {% with "save-the-date/images/"|add:main_image as main_static_url %}
+    {% with "bigday/images/"|add:main_image as main_static_url %}
         <img src="{% if email_mode %}cid:{{ main_image }}{% else %}{% static main_static_url %}{% endif %}"
-             alt="cory and rowena"
              style="display: block; padding: 0; color: #666666; text-decoration: none; font-family: Helvetica, arial, sans-serif; font-size: 16px;"
              class="img-max" border="0"
              height="400" width="500">
@@ -26,8 +25,9 @@
             <td style="padding: 20px 0 0 0; font-size: 16px; line-height: 20px; font-family: Helvetica, Arial, sans-serif; color: {{ font_color }};"
                 class="padding-copy"
                 align="center">
+                Save the date for the wedding of <br>
                 Connor &amp; Fiona<br>
-                LBJ Wildflower Center, Austin, Texas<br>
+                at the LBJ Wildflower Center in Austin, Texas<br>
                 Go to <a href="http://www.connorfiona.com">www.connorfiona.com</a> for updated info.<br>
             </td>
         </tr>
@@ -35,8 +35,8 @@
     </table>
 {% endblock %}
 {% block footer_content %}
-    Can't make it? Let us know at <a class="moz-txt-link-abbreviated" href="mailto:{{ rsvp_address }}">{{ rsvp_address }}</a>.
-    {% if email_mode %}
-        <p><a href="http://connorfiona.com">http://www.connorfiona.com</a></p>
-    {% endif %}
+{#    Can't make it? Let us know at <a class="moz-txt-link-abbreviated" href="mailto:{{ rsvp_address }}">{{ rsvp_address }}</a>.#}
+{#    {% if email_mode %}#}
+{#        <p><a href="http://connorfiona.com">http://www.connorfiona.com</a></p>#}
+{#    {% endif %}#}
 {% endblock %}

@@ -23,10 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'u7!-y4k1c6b44q507nr_l+c^12o7ur++cpzyn!$65w^!gum@h%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-# ALLOWED_HOSTS = ['www.connorfiona.com']
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.connorfiona.com', 'connorfiona.com']
+# ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -128,9 +128,9 @@ STATICFILES_DIRS = (
 )
 
 # the address your emails (save the dates/invites/etc.) will come from
-DEFAULT_WEDDING_FROM_EMAIL = 'You and Your Partner <cmcclellan1993@gmail.com>'
+DEFAULT_WEDDING_FROM_EMAIL = 'You and Your Partner <message@connorfiona.com>'
 # the default reply-to of your emails
-DEFAULT_WEDDING_REPLY_EMAIL = 'cmcclellan1993@gmail.com'
+DEFAULT_WEDDING_REPLY_EMAIL = 'message@connorfiona.com'
 
 WEDDING_DATE = 'September 8, 2019'
 

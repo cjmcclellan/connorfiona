@@ -13,17 +13,17 @@ from guests.models import Party
 
 SAVE_THE_DATE_TEMPLATE = 'guests/email_templates/save_the_date.html'
 SAVE_THE_DATE_CONTEXT_MAP = {
-        'lions-head': {
-            'title': "Taiwan Forest",
-            'header_filename': 'hearts.png',
-            'main_image': 'taiwan_forest_rot.png',
-            'main_color': '#fff3e8',
-            'font_color': '#666666',
-        },
+        # 'lions-head': {
+        #     'title': "Taiwan Forest",
+        #     'header_filename': 'hearts.png',
+        #     'main_image': 'taiwan_forest_rot.png',
+        #     'main_color': '#fff3e8',
+        #     'font_color': '#666666',
+        # },
         'texas': {
             'title': "Texas",
             'header_filename': 'hearts.png',
-            'main_image': 'texas.JPG',
+            'main_image': 'texas_anna_edits.jpg',
             'main_color': '#fff3e8',
             'font_color': '#666666',
         },
