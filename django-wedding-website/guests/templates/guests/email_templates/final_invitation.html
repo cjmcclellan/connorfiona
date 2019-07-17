@@ -1,0 +1,44 @@
+{% extends 'guests/email_templates/email_base.html' %}
+{% load staticfiles %}
+{% block main_image %}
+    <a href="http://www.connorfiona.com/"
+       {% if email_mode %}target="_blank"{% endif %}>
+    {% with "bigday/images/"|add:main_image as main_static_url %}
+        <img src="{% if email_mode %}cid:{{ main_image }}{% else %}{% static main_static_url %}{% endif %}"
+             style="display: block; padding: 0; color: #666666; text-decoration: none; font-family: Helvetica, arial, sans-serif; font-size: 16px;"
+             class="img-max" border="0"
+             height="400" width="500">
+    {% endwith %}
+    </a>
+{% endblock %}
+{% block main_copy %}
+    <table border="0" width="100%" cellpadding="0" cellspacing="0">
+        <tbody style="color: #2aabd2">
+        <tr>
+            <td style="font-size: 35px; font-family: Palatino, serif; color: {{ font_color }}; padding-top: 30px; font-weight:bolder;"
+                class="padding-copy"
+                align="center">
+                September 8, 2019
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 20px 0 0 0; font-size: 16px; line-height: 20px; font-family: Helvetica, Arial, sans-serif; color: {{ font_color }};"
+                class="padding-copy"
+                align="center">
+                Dear {{ recipient }}, <br>
+                We are happy to invite you to our wedding on September 8, 2019 at the LBJ Wildflower Center in Austin, Texas! <br>
+                Please fill out this <a href="https://docs.google.com/forms/d/e/1FAIpQLSceuRSKtxlTz_fX4PbDnHvt-XBWPugy42Z8GWeIYfTlZnc5rA/viewform?usp=sf_link">form</a> to RSVP. <br>
+                -Connor &amp; Fiona<br>
+                <br>
+                Go to <a href="http://www.connorfiona.com">www.connorfiona.com</a> for updated info.<br>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}
+{% block footer_content %}
+{#    Can't make it? Let us know at <a class="moz-txt-link-abbreviated" href="mailto:{{ rsvp_address }}">{{ rsvp_address }}</a>.#}
+{#    {% if email_mode %}#}
+{#        <p><a href="http://connorfiona.com">http://www.connorfiona.com</a></p>#}
+{#    {% endif %}#}
+{% endblock %}

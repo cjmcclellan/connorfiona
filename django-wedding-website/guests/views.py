@@ -8,10 +8,14 @@ from django.core.urlresolvers import reverse
 from django.db.models import Count, Q
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
+from django.template.loader import render_to_string
 from django.views.generic import ListView
+import csv
+import os
 from guests import csv_import
-from guests.invitation import get_invitation_context, INVITATION_TEMPLATE, guess_party_by_invite_id_or_404, \
-    send_invitation_email
+# from guests.invitation import get_invitation_context, INVITATION_TEMPLATE, guess_party_by_invite_id_or_404, \
+#     send_invitation_email
+from guests.create_invitation import get_invitation_context, INVITATION_TEMPLATE
 from guests.models import Guest, MEALS, Party
 from guests.save_the_date import get_save_the_date_context, send_save_the_date_email, SAVE_THE_DATE_TEMPLATE, \
     SAVE_THE_DATE_CONTEXT_MAP
@@ -139,6 +143,26 @@ def save_the_date_preview(request, template_id):
     context = get_save_the_date_context(template_id)
     context['email_mode'] = False
     return render(request, SAVE_THE_DATE_TEMPLATE, context=context)
+
+
+def invitation_preview(request, template_id, name):
+    # create_all_invitations()
+    context = get_invitation_context(template_id, name)
+    context['email_mode'] = False
+    return render(request, INVITATION_TEMPLATE, context=context)
+
+
+def create_all_invitations():
+    # import the names
+    # a = os.path.join(settings.STATICFILES_DIRS[0], 'invitations/invite_list.csv')
+    with open(os.path.join(settings.STATICFILES_DIRS[0], 'invitations/invite_list.csv')) as csvfile:
+        invite_list = csv.reader(csvfile, delimiter=' ', quotechar='|')
+        for name in invite_list:
+            context = get_invitation_context('invitation', name[0])
+            content = render_to_string(INVITATION_TEMPLATE, context)
+            with open(os.path.join(settings.STATICFILES_DIRS[0],
+                                   'invitations/{0}.html'.format(name[0])), 'w') as static_file:
+                static_file.write(content)
 
 
 @login_required
