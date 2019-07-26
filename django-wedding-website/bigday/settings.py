@@ -23,10 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'u7!-y4k1c6b44q507nr_l+c^12o7ur++cpzyn!$65w^!gum@h%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-# ALLOWED_HOSTS = ['www.connorfiona.com', 'connorfiona.com']
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.connorfiona.com', 'connorfiona.com']
+# ALLOWED_HOSTS = []
 
 # Application definition
 
