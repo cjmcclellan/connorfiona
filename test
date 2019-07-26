@@ -1,0 +1,21 @@
+<VirtualHost *:80>
+    ServerName 2d.stanford.edu
+    DocumentRoot /home/cjmcc/2dtrends/2DTrends/TwoDTrends
+    WSGIScriptAlias / /home/cjmcc/2dtrends/2DTrends/TwoDTrends/TwoDTrends/wsgi.py
+
+    # adjust the following line to match your Python path
+    WSGIDaemonProcess 2d.stanford.edu processes=2 threads=15 display-name=%{GROUP} python-home=/home/cjmcc/2dtrends/2DTrends/env2D/lib/python3.6
+    WSGIProcessGroup 2d.stanford.edu
+
+    <directory /home/cjmcc/2dtrends/2DTrends/TwoDTrends>
+        AllowOverride all
+        Require all granted
+        Options FollowSymlinks
+    </directory>
+
+    Alias /static/ /home/cjmcc/2dtrends/2DTrends/TwoDTrends/static/
+
+    <Directory /home/cjmcc/2dtrends/2DTrends/TwoDTrends/static>
+        Require all granted
+    </Directory>
+</VirtualHost>
